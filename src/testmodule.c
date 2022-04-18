@@ -20,8 +20,15 @@ test_message(PyObject *self, PyObject *args)
 
 }
 
+static PyObject *
+check_self(PyObject *self, PyObject *args)
+{
+    return Py_TYPE(self);
+}
+
 static PyMethodDef test_methods[] = {
         {"message", &test_message, METH_VARARGS, PyDoc_STR("message(word:str,title:str,type:int)->int")},
+        {"check_self", &check_self, METH_NOARGS, PyDoc_STR("check_self()->type")},
         {NULL, NULL, 0,                          NULL}
 };
 
